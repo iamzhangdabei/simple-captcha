@@ -62,9 +62,9 @@ module SimpleCaptcha #:nodoc
         defaults[:time] = options[:time] || Time.now.to_i
         
         query = defaults.collect{ |key, value| "#{key}=#{value}" }.join('&')
-        url = "/simple_captcha?code=#{simple_captcha_key}&#{query}"
+        url = "/simple_captcha?code=#{simple_captcha_key}&amp;#{query}"
         
-        "<img src='#{URI.encode(url)}' alt='captcha' />".html_safe
+        "<img src='#{url}' alt='captcha' />".html_safe
       end
       
       def simple_captcha_field(options={})
